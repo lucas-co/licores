@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Distribuidora de Licores Lucass - Neiva</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet" />
+</head>
+<body class="bg-gray-900 text-gray-100 font-sans">
+  <!-- Header -->
+  <header class="backdrop-blur-lg bg-black bg-opacity-40 text-white py-5 shadow-lg sticky top-0 z-50 border-b border-gray-700">
+    <div class="container mx-auto flex justify-between items-center px-6">
+      <h1 class="text-3xl font-extrabold tracking-wide text-yellow-400">Licores Lucass</h1>
+      <nav class="flex space-x-8 text-lg">
+        <a href="#productos" class="hover:text-yellow-400 transition">Productos</a>
+        <a href="#servicios" class="hover:text-yellow-400 transition">Servicios</a>
+        <a href="#pedidos" class="hover:text-yellow-400 transition">Pedidos</a>
+        <a href="#contacto" class="hover:text-yellow-400 transition">Contacto</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="relative h-[550px] bg-cover bg-center flex items-center justify-center" style="background-image: url('https://images.unsplash.com/photo-1603052875876-3813d77da348');">
+    <div class="absolute inset-0 bg-gradient-to-b from-black via-black/60 to-gray-900 opacity-90"></div>
+    <div class="relative z-10 text-center px-5">
+      <h2 class="text-5xl md:text-6xl font-extrabold text-yellow-400 drop-shadow-lg mb-4">Licores Lucass</h2>
+      <p class="text-xl md:text-2xl text-gray-200 mb-8">Distribuidora líder en Neiva • Calidad • Servicio • Precio</p>
+      <a href="#contacto" class="bg-yellow-500 hover:bg-yellow-600 text-black font-bold px-8 py-4 rounded-full text-xl shadow-xl transition">Cotizar Ahora</a>
+    </div>
+  </section>
+
+  <!-- Productos -->
+  <section id="productos" class="py-20 bg-gray-900">
+    <div class="container mx-auto px-6">
+      <h2 class="text-4xl font-extrabold text-center text-white mb-14">Nuestros Productos</h2>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-12">
+        <div class="bg-gray-800 p-6 rounded-2xl shadow-lg hover:scale-105 transition transform">
+          <img src="https://images.unsplash.com/photo-1581382575275-97901c650d25" alt="Whisky" class="rounded-xl mb-5 w-full h-56 object-cover" />
+          <h3 class="text-2xl font-bold text-yellow-400 mb-2">Whisky</h3>
+          <p class="text-gray-300">Amplia variedad de marcas premium perfectas para tu negocio o evento.</p>
+        </div>
+        <div class="bg-gray-800 p-6 rounded-2xl shadow-lg hover:scale-105 transition transform">
+          <img src="https://images.unsplash.com/photo-1601924573312-e1e055b46a6b" alt="Vinos" class="rounded-xl mb-5 w-full h-56 object-cover" />
+          <h3 class="text-2xl font-bold text-yellow-400 mb-2">Vinos</h3>
+          <p class="text-gray-300">Vinos tintos, blancos y espumosos cuidadosamente seleccionados.</p>
+        </div>
+        <div class="bg-gray-800 p-6 rounded-2xl shadow-lg hover:scale-105 transition transform">
+          <img src="https://images.unsplash.com/photo-1580910051074-e0d7d32f5973" alt="Cervezas" class="rounded-xl mb-5 w-full h-56 object-cover" />
+          <h3 class="text-2xl font-bold text-yellow-400 mb-2">Cervezas</h3>
+          <p class="text-gray-300">Cervezas nacionales e importadas a los mejores precios del mercado.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Catálogo Dinámico -->
+  <section id="catalogo" class="py-20 bg-gray-900">
+    <div class="container mx-auto px-6 text-center">
+      <h2 class="text-4xl font-extrabold text-white mb-10">Catálogo Dinámico</h2>
+      <p class="text-gray-300 mb-8">Selecciona una categoría para mostrar productos</p>
+      <select id="categoriaSelect" class="bg-gray-800 text-white p-3 rounded-lg mb-10">
+        <option value="whisky">Whisky</option>
+        <option value="vinos">Vinos</option>
+        <option value="cervezas">Cervezas</option>
+      </select>
+      <div id="catalogoContainer" class="grid grid-cols-1 md:grid-cols-3 gap-10"></div>
+    </div>
+  </section>
+
+  <script>
+    const productos = {
+      whisky: [
+        { nombre: "Whisky Old Parr", img: "https://images.unsplash.com/photo-1581382575275-97901c650d25" },
+        { nombre: "Whisky Buchanan's", img: "https://images.unsplash.com/photo-1558640476-437aef67e999" }
+      ],
+      vinos: [
+        { nombre: "Vino Tinto Reservado", img: "https://images.unsplash.com/photo-1601924573312-e1e055b46a6b" },
+        { nombre: "Vino Blanco Dulce", img: "https://images.unsplash.com/photo-1510626176961-4b57d4fbad03" }
+      ],
+      cervezas: [
+        { nombre: "Cerveza Corona", img: "https://images.unsplash.com/photo-1580910051074-e0d7d32f5973" },
+        { nombre: "Cerveza Heineken", img: "https://images.unsplash.com/photo-1544145945-f90425340c7e" }
+      ]
+    };
+
+    const categoriaSelect = document.getElementById('categoriaSelect');
+    const catalogoContainer = document.getElementById('catalogoContainer');
+
+    function cargarCatalogo() {
+      const categoria = categoriaSelect.value;
+      catalogoContainer.innerHTML = productos[categoria]
+        .map(p => `
+          <div class='bg-gray-800 p-6 rounded-xl shadow-lg hover:scale-105 transition'>
+            <img src='${p.img}' class='rounded-xl w-full h-56 object-cover mb-4'/>
+            <h3 class='text-2xl text-yellow-400 font-bold mb-2'>${p.nombre}</h3>
+          </div>
+        `).join('');
+    }
+
+    categoriaSelect.addEventListener('change', cargarCatalogo);
+    cargarCatalogo();
+  </script>
+
+  <!-- Servicios -->
+  <section id="servicios" class="py-20 bg-gray-800">
+    <div class="container mx-auto px-6">
+      <h2 class="text-4xl font-extrabold text-center text-white mb-14">Servicios</h2>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-12">
+        <div class="bg-gray-900 p-8 rounded-2xl shadow-lg border border-gray-700">
+          <h3 class="text-2xl font-bold text-yellow-400 mb-3">Distribución a Negocios</h3>
+          <p class="text-gray-300">Abastecimiento confiable para bares, licorerías, discotecas y restaurantes.</p>
+        </div>
+        <div class="bg-gray-900 p-8 rounded-2xl shadow-lg border border-gray-700">
+          <h3 class="text-2xl font-bold text-yellow-400 mb-3">Atención a Eventos</h3>
+          <p class="text-gray-300">Suministro para fiestas, eventos empresariales y celebraciones especiales.</p>
+        </div>
+        <div class="bg-gray-900 p-8 rounded-2xl shadow-lg border border-gray-700">
+          <h3 class="text-2xl font-bold text-yellow-400 mb-3">Precios Mayoristas</h3>
+          <p class="text-gray-300">Descuentos exclusivos para distribuidores y compras al por mayor.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contacto -->
+
+  <!-- Formulario de Pedidos -->
+  <section id="pedidos" class="py-20 bg-gray-800 text-white">
+    <div class="container mx-auto px-6 max-w-2xl">
+      <h2 class="text-4xl font-extrabold text-center mb-10">Formulario de Pedidos</h2>
+      <form class="bg-gray-900 p-8 rounded-2xl shadow-lg grid gap-6">
+        <input type="text" placeholder="Nombre Completo" class="p-3 rounded bg-gray-800 border border-gray-700" required>
+        <input type="text" placeholder="Número de WhatsApp" class="p-3 rounded bg-gray-800 border border-gray-700" required>
+        <select class="p-3 rounded bg-gray-800 border border-gray-700" required>
+          <option value="">Selecciona el tipo de licor</option>
+          <option>Whisky</option>
+          <option>Vino</option>
+          <option>Cerveza</option>
+        </select>
+        <textarea class="p-3 rounded bg-gray-800 border border-gray-700" rows="4" placeholder="Escribe aquí tu pedido"></textarea>
+        <button class="bg-yellow-500 hover:bg-yellow-600 text-black font-bold px-6 py-3 rounded-lg text-lg transition">Enviar Pedido</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- Contacto -->
+  <section id="contacto" class="py-20 bg-black text-white text-center">
+    <div class="container mx-auto px-6">
+      <h2 class="text-4xl font-extrabold mb-6">Contáctanos</h2>
+      <p class="text-lg mb-4">Distribuidora de Licores Lucass - Neiva, Huila</p>
+      <p class="text-xl mb-4">📞 WhatsApp: <strong>+57 3026081911</strong></p>
+      <p class="text-xl mb-10">📍 Dirección: Servicio Domicilio, Neiva</p>
+      <a href="https://wa.me/573026081911" class="bg-yellow-500 hover:bg-yellow-600 text-black font-bold px-8 py-4 rounded-full text-xl shadow-xl transition">Escribir por WhatsApp</a>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-gray-950 text-gray-400 py-6 text-center text-sm border-t border-gray-700">
+    © 2025 Distribuidora de Licores Lucass • Neiva, Huila
+  </footer>
+</body>
+</html>
