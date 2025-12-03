@@ -1,0 +1,273 @@
+/* GENERAL */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: #CBA135;
+    color: #eee;
+    font-family: "Segoe UI", sans-serif;
+}
+
+a {
+    text-decoration: none;
+}
+
+/* CONTAINERS */
+.container {
+    width: 90%;
+    max-width: 1300px;
+    margin: auto;
+}
+
+/* HEADER */
+.header {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    background: rgba(0,0,0,0.7);
+    backdrop-filter: blur(10px);
+    padding: 20px 0;
+    border-bottom: 1px solid #333;
+}
+
+.header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    color: #f4c32f;
+    font-size: 32px;
+    font-weight: 800;
+}
+
+.nav a {
+    margin-left: 25px;
+    font-size: 18px;
+    color: #ddd;
+    transition: 0.3s;
+}
+
+.nav a:hover {
+    color: #f4c32f;
+}
+
+/* HERO */
+.hero { 
+    height: 250px;
+    background-image: url('https://images.unsplash.com/photo-1603052875876-3813d77da348');
+    background-size: cover;
+    background-position: center;
+    position: relative;
+}
+
+.hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to bottom, #000, #000a, #111);
+}
+
+.hero-content { 
+    position: relative;
+    text-align: center;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.hero h2 {
+    margin-top: 5px;
+    font-size: 65px;
+    color: #f4c32f;
+}
+
+.hero p {
+    margin-top: 10px;
+    font-size: 22px;
+    color: #ccc;
+}
+
+.btn-primary {
+    display: inline-block;
+    margin-top: 25px;
+    background: #f4c32f;
+    color: black;
+    padding: 15px 40px;
+    font-weight: bold;
+    border-radius: 50px;
+    transition: 0.3s;
+}
+
+.btn-primary:hover {
+    background: #ffe083;
+}
+
+
+/* SLIDER */
+.slider {
+    position: relative;
+    width: 100%;
+    height: 60vh;
+    overflow: hidden;
+}
+
+.slider img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.slides {
+    display: flex;
+    width: 300%;
+    height: 100%;
+    transition: transform 0.8s ease-in-out;
+}
+
+.slide {
+    width: 100%;
+    flex-shrink: 0;
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
+    position: absolute;
+    inset: 0;
+}
+
+.slide.active {
+    opacity: 1;
+    position: absolute;
+}
+
+/* BOTONES */
+.slider-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 40px;
+    color: white;
+    cursor: pointer;
+    padding: 10px;
+    z-index: 10;
+    transition: 0.3s;
+    user-select: none;
+}
+
+.slider-btn:hover {
+    color: #fcb900;
+}
+
+.prev {
+    left: 20px;
+}
+
+.next {
+    right: 20px;
+}
+
+
+/* SECTIONS */
+.section {
+    padding: 70px 0;
+    text-align: center;
+}
+
+.section-title {
+    font-size: 40px;
+    margin-bottom: 40px;
+    color: white;
+}
+
+.section-sub {
+    color: #bbb;
+    margin-bottom: 20px;
+}
+
+/* GRID */
+.grid {
+    display: grid;
+    gap: 30px;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+}
+
+/* CARDS */
+.card {
+    background: #121212;
+    padding: 20px;
+    border-radius: 15px;
+    transition: 0.5s;
+    box-shadow: 0 0 20px #006;
+}
+
+.card img {
+    width: 100%;
+    height: 230px;
+    object-fit: cover;
+    border-radius: 12px;
+}
+
+.card:hover {
+    transform: scale(1.05);
+}
+
+/* CATÁLOGO SELECT */
+.select {
+    margin-bottom: 30px;
+    background: #222;
+    color: white;
+    padding: 12px;
+    width: 250px;
+    border-radius: 8px;
+    border: 1px solid #444;
+}
+
+/* SERVICIOS */
+.alt {
+    background: #181818;
+}
+
+.service-box {
+    padding: 30px;
+    background: #222;
+    border-radius: 15px;
+    border: 1px solid #333;
+}
+
+/* FORMULARIO */
+.form {
+    max-width: 500px;
+    margin: auto;
+    display: grid;
+    gap: 20px;
+    background: #1b1b1b;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 0 20px #0007;
+}
+
+.form input,
+.form select,
+.form textarea {
+    padding: 12px;
+    border-radius: 8px;
+    background: #222;
+    border: 1px solid #333;
+    color: white;
+}
+
+/* CONTACTO */
+.contact p {
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+
+/* FOOTER */
+.footer {
+    text-align: center;
+    padding: 20px;
+    background: #000;
+    color: #aaa;
+    border-top: 1px solid #333;
+}
